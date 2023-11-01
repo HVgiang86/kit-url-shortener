@@ -5,7 +5,7 @@
   "main": "./production-server/server.js",
   "scripts": {
     "test": "jest --passWithNoTests",
-    "docker:build": "docker build -t kutt .",
+    "docker:build": "npm install && docker build -t kutt .",
     "docker:run": "docker run -p 3000:3000 --env-file .env -d kutt:latest",
     "docker:prod": "docker-compose up -d",
     "dev": "npm run migrate && cross-env NODE_ENV=development nodemon server/server.ts",
