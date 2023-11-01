@@ -16,7 +16,8 @@
     "lint": "eslint server/ --ext .js,.ts --fix",
     "lint:nofix": "eslint server/ --ext .js,.ts",
     "docs:build": "cd docs/api && tsc generate.ts --resolveJsonModule && node generate && cd ../..",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "install": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -149,5 +150,8 @@
       "react-dom": "*",
       "d3-color": "*"
     }
+  },
+  "engines": {
+    "node": "^16"
   }
 }
