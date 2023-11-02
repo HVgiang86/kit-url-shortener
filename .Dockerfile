@@ -5,15 +5,15 @@ RUN apk add --update bash
 ENV PORT=3000
 ENV SITE_NAME=KIT\ URLs\ Shortener
 
-ENV DEFAULT_DOMAIN=localhost:3000
+ENV DEFAULT_DOMAIN=kit-urls-shortener.onrender.com
 ENV LINK_LENGTH=6
 
-ENV DB_HOST=dpg-cl0itqjjdq6s73dq23ng-a.singapore-postgres.render.com
-ENV DB_PORT=5432
-ENV DB_NAME=kiturlshortener
-ENV DB_USER=kiturlshortener_user
-ENV DB_PASSWORD=GFRr1NZZd8dty8xFNAHtfN20fFuG4ga5
-ENV DB_SSL=true
+ENV DB_HOST=by8tgzkwuw0zh5ymfmnf-postgresql.services.clever-cloud.com
+ENV DB_PORT=50013
+ENV DB_NAME=by8tgzkwuw0zh5ymfmnf
+ENV DB_USER=u29q7d3j2azsa9hc2452
+ENV DB_PASSWORD=UYsPRoTBQOPCIwY5Y3ntUcrJHZCGHJ
+ENV DB_SSL=false
 ENV REDIS_HOST=redis-17204.c295.ap-southeast-1-1.ec2.cloud.redislabs.com
 ENV REDIS_PORT=17204
 ENV REDIS_PASSWORD=jtH7ct4eOGsrqDt6pqVUJoC8YZEeVOMy
