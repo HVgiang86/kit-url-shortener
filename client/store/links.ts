@@ -93,8 +93,10 @@ export const links: Links = {
     await axios.post(APIv2.Links, data, getAxiosConfig()).then(_res => { 
       res = _res
       var _domain = null
-      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
-        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      if (!(!publicRuntimeConfig.A_DOMAIN || publicRuntimeConfig.A_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.A_DOMAIN
+      } else {
+        _domain = 'short.kit.id.vn'
       }
       try {
         if (_domain !== null) {
@@ -122,8 +124,11 @@ export const links: Links = {
     ).then(_res => {
       res = _res
       var _domain = null
-      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
-        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      console.log(`alternative env variable ${publicRuntimeConfig.A_DOMAIN}`)
+      if (!(!publicRuntimeConfig.A_DOMAIN || publicRuntimeConfig.A_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.A_DOMAIN
+      } else {
+        _domain = 'short.kit.id.vn'
       }
       console.log(`alternative domain: ${_domain}`)
     
@@ -172,8 +177,10 @@ export const links: Links = {
     ).then(_res => {
       res = _res
       var _domain = null
-      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
-        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      if (!(!publicRuntimeConfig.A_DOMAIN || publicRuntimeConfig.A_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.A_DOMAIN
+      } else {
+        _domain = 'short.kit.id.vn'
       }
       try {
         if (_domain !== null) {

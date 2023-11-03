@@ -2,11 +2,16 @@ FROM node:12-alpine
 
 RUN apk add --update bash
 
-ENV PORT=3000
-ENV SITE_NAME=KIT_URLs_Shortener
+ARG SITE_NAME=KIT\ URLs\ Shortener
 
-ENV DEFAULT_DOMAIN=kitshort.azurewebsites.net
-ENV ALTERNATIVE_DOMAIN=short.kit.id.vn
+ENV PORT=3000
+ENV SITE_NAME=${SITE_NAME}
+
+ENV DEFAULT_DOMAIN=localhost:3000
+
+ARG A_DOMAIN=short.kit.id.vn
+ENV A_DOMAIN=${A_DOMAIN}
+
 ENV LINK_LENGTH=6
 
 ENV DB_HOST=by8tgzkwuw0zh5ymfmnf-postgresql.services.clever-cloud.com
@@ -17,7 +22,7 @@ ENV DB_PASSWORD=UYsPRoTBQOPCIwY5Y3ntUcrJHZCGHJ
 ENV DB_SSL=false
 ENV REDIS_HOST=redis-17204.c295.ap-southeast-1-1.ec2.cloud.redislabs.com
 ENV REDIS_PORT=17204
-ENV REDIS_PASSWORD=UYsPRoTBQOPCIwY5Y3ntUcrJHZCGHJ
+ENV REDIS_PASSWORD=jtH7ct4eOGsrqDt6pqVUJoC8YZEeVOMy
 
 ENV DISALLOW_REGISTRATION=false
 
@@ -43,7 +48,7 @@ WORKDIR /usr/src/app
 
 # Installing dependencies
 COPY package*.json ./
-RUN echo "DEFAULT DOMAIN IS $DEFAULT_DOMAIN ON PORT $PORT"
+RUN echo "DEFAULT DOMAIN IS $DEFAULT_DOMAIN ON PORT $PORT\nAlternative domain ${A_DOMAIN}"
 RUN npm install
 
 # Copying source files
