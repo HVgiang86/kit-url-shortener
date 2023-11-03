@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_04e477180a8d4facac8afcacce78e0df }}/hvgiang86/kutt_hvg_deployment:${{ github.sha }}
+        tags: index.docker.io/hvgiang86/kutt_hvg_deployment:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'kitshortenerdockerenv'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_00ade129e20243919f412b9c448c0693 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_04e477180a8d4facac8afcacce78e0df }}/hvgiang86/kutt_hvg_deployment:${{ github.sha }}'
+        images: 'index.docker.io/hvgiang86/kutt_hvg_deployment:${{ github.sha }}'
