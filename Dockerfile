@@ -3,7 +3,7 @@ FROM node:12-alpine
 RUN apk add --update bash
 
 ENV PORT=3000
-ENV SITE_NAME=KIT_URLs_Shortener
+ARG SITE_NAME=KIT\ URLs\ Shortener
 
 ENV DEFAULT_DOMAIN=kitshortenerdockerenv.azurewebsites.net
 ENV LINK_LENGTH=6
@@ -24,8 +24,8 @@ ENV MAIL_HOST=smtp.gmail.com
 ENV MAIL_PORT=587
 ENV MAIL_SECURE=false
 ENV MAIL_USER=HVGiang86@gmail.com
-ENV MAIL_FROM=HVGiang\ Shortener
-ENV MAIL_PASSWORD=gtat\ laar\ eubt\ lhqm
+ARG MAIL_FROM=KIT\ Shortener
+ARG MAIL_PASSWORD=gtat\ laar\ eubt\ lhqm
 
 ENV DISALLOW_REGISTRATION=false
 ENV DISALLOW_ANONYMOUS_LINKS=false
@@ -37,24 +37,4 @@ ENV JWT_SECRET=myJWTSecretFOrKUTTUrlsShortener
 ENV ADMIN_EMAILS=HVGiang86@gmail.com
 
 
-# Setting working directory. 
-WORKDIR /usr/src/app
-
-# Installing dependencies
-COPY package*.json ./
-RUN echo "DEFAULT DOMAIN IS $DEFAULT_DOMAIN ON PORT $PORT"
-RUN npm install
-
-# Copying source files
-COPY . .
-
-# Give permission to run script
-RUN chmod +x ./wait-for-it.sh
-
-# Build files
-RUN npm run build
-
-EXPOSE 3000
-
-# Running the app
-CMD [ "npm", "start" ]
+RUN echo "DEFAULT DOMAIN IS $SITE_NAME ON PORT $PORT"
