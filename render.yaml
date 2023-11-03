@@ -1,6 +1,0 @@
-services:
-  - type: web
-    env: docker
-    name: kit-url-shortener
-    repo: https://github.com/HVgiang86/kit-url-shortener.git
-    envVars:
