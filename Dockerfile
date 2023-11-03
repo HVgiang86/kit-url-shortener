@@ -5,8 +5,8 @@ RUN apk add --update bash
 ENV PORT=3000
 ENV SITE_NAME=KIT_URLs_Shortener
 
-ENV DEFAULT_DOMAIN=localhost:3000
-ENV ALTERNATIVE_DOMAIN=127.0.0.1:3000
+ENV DEFAULT_DOMAIN=kitshort.azurewebsites.net
+ENV ALTERNATIVE_DOMAIN=short.kit.id.vn
 ENV LINK_LENGTH=6
 
 ENV DB_HOST=by8tgzkwuw0zh5ymfmnf-postgresql.services.clever-cloud.com
