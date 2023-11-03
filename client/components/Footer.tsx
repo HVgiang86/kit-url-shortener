@@ -26,17 +26,21 @@ const Footer: FC = () => {
     >
       {!isAuthenticated && <ReCaptcha />}
       <Text fontSize={[12, 13]} py={2}>
-        Made with love by{" "}
-        <ALink href="//thedevs.network/" title="The Devs" target="_blank">
-          The Devs
+        Powered with open-source project Kutt{" | "}
+        <ALink href="https://github.com/thedevs-network/kutt" title="Kutt Project" target="_blank">
+          Kutt GitHub
         </ALink>
-        .{" | "}
+        .{" | Developed by "}
         <ALink
-          href="https://github.com/thedevs-network/kutt"
-          title="GitHub"
+          href="https://github.com/HVgiang86"
+          title="GitHub HVGiang86"
           target="_blank"
         >
-          GitHub
+          Giang Hoàng
+        </ALink>
+        {" | "}
+        <ALink href="https://www.facebook.com/kitclubKMA/" title="KIT CLUB KMA" target="_blank">
+          KIT CLUB Fanpage
         </ALink>
         {" | "}
         <ALink href="/terms" title="Terms of Service" isNextLink>

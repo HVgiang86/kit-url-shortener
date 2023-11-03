@@ -32,13 +32,13 @@ const Tr = styled(Flex).attrs({ as: "tr", px: [12, 12, 2] })``;
 const Th = styled(Flex)``;
 Th.defaultProps = { as: "th", flexBasis: 0, py: [12, 12, 3], px: [12, 12, 3] };
 
-const Td = styled(Flex)<{ withFade?: boolean }>`
+const Td = styled(Flex) <{ withFade?: boolean }>`
   position: relative;
   white-space: nowrap;
 
   ${ifProp(
-    "withFade",
-    css`
+  "withFade",
+  css`
       :after {
         content: "";
         position: absolute;
@@ -57,7 +57,7 @@ const Td = styled(Flex)<{ withFade?: boolean }>`
         );
       }
     `
-  )}
+)}
 `;
 Td.defaultProps = {
   as: "td",
@@ -130,8 +130,8 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
       description: link.description,
       expire_in: link.expire_in
         ? ms(differenceInMilliseconds(new Date(link.expire_in), new Date()), {
-            long: true
-          })
+          long: true
+        })
         : "",
       password: ""
     },

@@ -4,6 +4,8 @@ import query from "query-string";
 
 import { getAxiosConfig } from "../utils";
 import { APIv2 } from "../consts";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 export interface Link {
   id: string;
@@ -87,18 +89,66 @@ export const links: Links = {
     const data = Object.fromEntries(
       Object.entries(payload).filter(([, value]) => value !== "")
     );
-    const res = await axios.post(APIv2.Links, data, getAxiosConfig());
+    var res
+    await axios.post(APIv2.Links, data, getAxiosConfig()).then(_res => { 
+      res = _res
+      var _domain = null
+      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      }
+      try {
+        if (_domain !== null) {
+            var _link = res.data.link
+            var ss = _link.split('/', 4)
+          res.data.link = `https://${_domain}/${ss[3]}`;
+          console.log(res.data.link)
+        }
+      } catch (e) {
+        console.log(e);
+      }
+
+    }).catch((err) => { 
+
+    })
     actions.add(res.data);
     return res.data;
   }),
   get: thunk(async (actions, payload) => {
     actions.setLoading(true);
-    const res = await axios.get(
+    var res
+    await axios.get(
       `${APIv2.Links}?${query.stringify(payload)}`,
       getAxiosConfig()
-    );
+    ).then(_res => {
+      res = _res
+      var _domain = null
+      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      }
+      console.log(`alternative domain: ${_domain}`)
+    
+      try {
+        if (_domain !== null) {
+          var datatSet = []
+          for (var s of res.data.data) {
+            var _link = s.link
+            var ss = _link.split('/', 4)
+            s.link = `https://${_domain}/${ss[3]}`
+            console.log(s.link)
+            datatSet.push(s);
+          }
+          res.data.data = datatSet
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }).catch(err => { 
+
+    })
+    
     actions.set(res.data);
     actions.setLoading(false);
+    
     return res.data;
   }),
   remove: thunk(async (actions, id) => {
@@ -114,11 +164,28 @@ export const links: Links = {
     return res.data;
   }),
   edit: thunk(async (actions, { id, ...payload }) => {
-    const res = await axios.patch(
+    var res
+    await axios.patch(
       `${APIv2.Links}/${id}`,
       payload,
       getAxiosConfig()
-    );
+    ).then(_res => {
+      res = _res
+      var _domain = null
+      if (!(publicRuntimeConfig.ALTERNATIVE_DOMAIN === null || publicRuntimeConfig.ALTERNATIVE_DOMAIN.length == 0)) { 
+        _domain = publicRuntimeConfig.ALTERNATIVE_DOMAIN
+      }
+      try {
+        if (_domain !== null) {
+            var _link = res.data.link
+            var ss = _link.split('/', 4)
+          res.data.link = `https://${_domain}/${ss[3]}`;
+          console.log(res.data.link)
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }).catch(_error => { })
     actions.update(res.data);
   }),
   add: action((state, payload) => {
