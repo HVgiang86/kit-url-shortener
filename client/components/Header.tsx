@@ -113,7 +113,7 @@ const Header: FC = () => {
               width={18}
               height={24}
             />
-            {publicRuntimeConfig.SITE_NAME}
+            KIT URLs Shortener
           </ALink>
         </LogoImage>
 
