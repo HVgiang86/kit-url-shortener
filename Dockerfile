@@ -3,9 +3,9 @@ FROM node:12-alpine
 RUN apk add --update bash
 
 ENV PORT=3000
-ENV SITE_NAME=KIT\ URLs\ Shortener
+ENV SITE_NAME=KIT_URLs_Shortener
 
-ENV DEFAULT_DOMAIN=localhost:3000
+ENV DEFAULT_DOMAIN=kitshortenerdockerenv.azurewebsites.net
 ENV LINK_LENGTH=6
 
 ENV DB_HOST=dpg-cl0itqjjdq6s73dq23ng-a.singapore-postgres.render.com
