@@ -7,9 +7,9 @@ ARG SITE_NAME=KIT\ URLs\ Shortener
 ENV PORT=3000
 ENV SITE_NAME=${SITE_NAME}
 
-ENV DEFAULT_DOMAIN=localhost:3000
+ENV DEFAULT_DOMAIN=kitshort.azurewebsites.net/
 
-ARG A_DOMAIN=short.kit.id.vn
+ARG A_DOMAIN=short.kitkma.com
 ENV A_DOMAIN=${A_DOMAIN}
 
 ENV LINK_LENGTH=6
